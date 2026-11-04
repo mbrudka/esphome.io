@@ -128,6 +128,9 @@ backoff, and AVRCP negotiation. A timed-out request returns the media player to 
 When multiple media players use separate A2DP speakers, set `on_preempt` on each speaker to stop its media player.
 The new playback request releases the previous connection and updates the previous player's state to `idle`.
 
+The A2DP connection can close between queued items. The next item then waits for a new connection and AVRCP volume
+setup, which can leave a gap between tracks. Allow for this delay when using a playlist.
+
 ```yaml
 esp32:
   board: esp32dev
